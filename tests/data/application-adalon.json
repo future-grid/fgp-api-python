@@ -1,0 +1,83 @@
+{
+  "links": {
+    "self": "http://localhost:8082/adalon/",
+    "urls": [
+      {
+        "url": "http://localhost:8082/adalon/meter_reference",
+        "method": "GET",
+        "params": [
+          "PathParam : [meter_reference] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/global_config",
+        "method": "GET",
+        "params": [
+          "PathParam : [global_config] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/meter",
+        "method": "GET",
+        "params": [
+          "PathParam : [meter] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/profile",
+        "method": "GET",
+        "params": [
+          "PathParam : [profile] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/transformer",
+        "method": "GET",
+        "params": [
+          "PathParam : [transformer] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/event_reference",
+        "method": "GET",
+        "params": [
+          "PathParam : [event_reference] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/datapump",
+        "method": "GET",
+        "params": [
+          "PathParam : [datapump] java.lang.String arg0"
+        ]
+      },
+      {
+        "url": "http://localhost:8082/adalon/reload-script",
+        "method": "GET"
+      }
+    ]
+  },
+  "data": [
+    {
+      "meter_reference": "reference"
+    },
+    {
+      "global_config": "reference"
+    },
+    {
+      "meter": "device"
+    },
+    {
+      "profile": "device"
+    },
+    {
+      "transformer": "device"
+    },
+    {
+      "event_reference": "reference"
+    },
+    {
+      "datapump": "device"
+    }
+  ]
+}

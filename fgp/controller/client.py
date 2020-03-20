@@ -18,13 +18,22 @@ class Client:
         params = {} if params is None else params
         data = {} if data is None else data
 
-        return requests.request(
+        result = requests.request(
             url=url,
             params=params,
             method=method,
             json=data,
             headers=headers
         )
+
+        if result.status_code >= 400:
+            raise Exception(f'{method.upper()} {url} failed -  {result.reason}')
+
+        try:
+            return result.json()
+        except Exception as e:
+            print(result)
+            raise Exception(f'Invalid response received from API - {e}')
 
     def post(self, route: str, data: dict=None, params: dict=None):
         return self.call('post', route, data, params)

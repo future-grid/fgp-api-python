@@ -1,15 +1,22 @@
 import logging
-from controller.client import Client
-from controller.store import Store
+from fgp.controller.client import Client
+from fgp.controller.store import Store
+from fgp.controller.reference import Reference
+from fgp.controller.event import Event
 
 
 class ApiClient:
     _client: Client = None
     store: Store = None
+    reference: Reference = None
+    client: Client = None
 
     def __init__(self, url, application):
         self._client = Client(url, application)
         self.store = Store(self._client)
+        self.reference = Reference(self._client)
+        self.event = Event(self._client)
+
 
 if __name__ == 'fgp':
     # create logger

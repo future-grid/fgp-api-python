@@ -4,7 +4,7 @@ from fgp.controller.store import Store
 import pandas
 
 
-def test_store_parse_data():
+def test_parse_get_data():
     response = {
         '9000000002_9000000002': {
             'data': [
@@ -302,14 +302,16 @@ def test_store_parse_data():
         }
     }
 
-    df: pandas.DataFrame = Store.parse_store_data(response)
+    df: pandas.DataFrame = Store.parse_get_data(response)
     assert type(df) is pandas.DataFrame
     assert list(df.columns) == ['device_name', 'device_key', 'timestamp', 'currentA', 'voltageA']
     assert round(df.groupby('device_name').mean().voltageA[0], 3) == round(245.07394463667825, 3)
 
 
-def test_store_get_data():
-    client = fgp.ApiClient(url='http://localhost:8082', application='adalon')
+def test_parse_get_first_last():
+    pass
+
+def test_store_get_data(client):
     df = client.store.get_data(
         device_type='meter',
         store_name='meterPqStore',
@@ -320,3 +322,8 @@ def test_store_get_data():
     )
 
     assert df.groupby('device_name').count()['timestamp'][0] == 289
+
+
+def test_store_get_first_last(client):
+    result = client.store.get_first_last(device_type='meter', store_name='meterPqStore', device_name='9000000002_9000000002')
+    assert type(result) is tuple
